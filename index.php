@@ -17,6 +17,17 @@ include('MaintenanceClass.php');
 Observer::observe('page_requested', 'maintenance_check');
 Behavior::add('Maintenance', '');
 
+Dispatcher::addRoute(array(
+
+	'/maintenance'					=>	'/plugin/maintenance/index',
+	'/maintenance/'					=>	'/plugin/maintenance/index',
+	'/maintenance/access'			=>	'/plugin/maintenance/access',
+	'/maintenance/access/'			=>	'/plugin/maintenance/access',
+	'/maintenance/settings'			=>	'/plugin/maintenance/settings',
+	'/maintenance/settings/'		=>	'/plugin/maintenance/settings',
+
+));
+
 function maintenance_check($uri) {
 	$settings = Plugin::getAllSettings('maintenance');
 	if($settings['maintenanceMode'] == 'on') {
