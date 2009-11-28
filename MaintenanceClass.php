@@ -51,4 +51,16 @@ class Maintenance {
 		return $maintenancePage[0]['slug'];
 	}
 
+	public function switchStatus($newStatus) {
+		global $__CMS_CONN__;
+		$sql = "UPDATE ".TABLE_PREFIX."plugin_settings
+				SET value='$newStatus'
+				WHERE plugin_id='maintenance'
+				AND name = 'maintenanceMode'
+				";
+		$stmt = $__CMS_CONN__->prepare($sql);
+		$stmt->execute();
+		return $newStatus;
+	}
+
 }

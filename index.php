@@ -19,12 +19,13 @@ Behavior::add('Maintenance', '');
 
 Dispatcher::addRoute(array(
 
-	'/maintenance'					=>	'/plugin/maintenance/index',
-	'/maintenance/'					=>	'/plugin/maintenance/index',
-	'/maintenance/access'			=>	'/plugin/maintenance/access',
-	'/maintenance/access/'			=>	'/plugin/maintenance/access',
-	'/maintenance/settings'			=>	'/plugin/maintenance/settings',
-	'/maintenance/settings/'		=>	'/plugin/maintenance/settings',
+	'/maintenance'						=>	'/plugin/maintenance/index',
+	'/maintenance/'						=>	'/plugin/maintenance/index',
+	'/maintenance/access'				=>	'/plugin/maintenance/access',
+	'/maintenance/access/'				=>	'/plugin/maintenance/access',
+	'/maintenance/settings'				=>	'/plugin/maintenance/settings',
+	'/maintenance/settings/'			=>	'/plugin/maintenance/settings',
+	'/maintenance/switchStatus/:any'	=>	'/plugin/maintenance/switchStatus/$1',
 
 ));
 
