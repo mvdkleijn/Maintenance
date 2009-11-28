@@ -37,7 +37,12 @@ By setting up a listener for these Observers, you can use this data in your own 
 NOTES
 -----
 
-There is a backdoor into the site during maintenance mode, but it must be enabled to work.
-It isn't advised to enable it but may come in handy if blocking solely by IP address does not satisfy your needs.
-Adding ?backdoorkey=YOUR_KEY_HERE to the URL of a page which is otherwise restricted will unlock that page for you.
-You need to set up your key in the plugin settings page.
+	BACKDOOR
+		There is a backdoor into the site during maintenance mode, but it must be enabled to work.
+		It isn't advised to enable it but may come in handy if blocking solely by IP address does not satisfy your needs.
+		Adding ?backdoorkey=YOUR_KEY_HERE to the URL of a page which is otherwise restricted will unlock that page for you.
+		You need to set up your key in the plugin settings page.
+
+	LOCAL DEVELOPMENT
+		If you have a server running on your local machine, when you access it, your IP address in PHP Env will usually be 127.0.0.1
+		As part of the enable script, this will be added to the access list to save you the step / headache.
