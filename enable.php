@@ -27,9 +27,50 @@
 
     $createPageContent = "
     	CREATE TABLE `".TABLE_PREFIX."maintenance_page` (
-			`content` varchar(4096) DEFAULT NULL
+    		`id` int(1) DEFAULT NULL,
+			`value` varchar(4096) DEFAULT NULL
 		)";
     $stmt = $__CMS_CONN__->prepare($createPageContent);
     $stmt->execute();
+
+	$maintenanceHTML = '<html>
+	<head>
+		<title>Maintenance Mode</title>
+		<style>
+			body {
+				background: #B6B6B6;
+				color: #000000;
+				font: 75% Tahoma, Verdana, Arial, Helvetica, sans-serif;
+				text-align: center;
+			}
+			#offlineHolder {
+				margin: 100px auto;
+				padding: 20px;
+				width: 300px;
+				height: 60px;
+				background-color: white;
+				border-radius: 15px;
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="offlineHolder">
+			<p><strong>We are currently offline for maintenance.</strong></p>
+			<p>We will be back online soon.</p>
+		</div>
+	</body>
+</html>';
+
+
+
+	global $__CMS_CONN__;
+	$sql = "	INSERT INTO `".TABLE_PREFIX."maintenance_page` (`id`,`value`)
+				VALUES
+					('1', '$maintenanceHTML')
+				;";
+	$pdo = $__CMS_CONN__->prepare($sql);
+	$pdo->execute();
 
 	exit();

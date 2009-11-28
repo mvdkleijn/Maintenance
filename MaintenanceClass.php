@@ -33,9 +33,9 @@ class Maintenance {
 	}
 
 	private function displayContent() {
-		$sql = "SELECT * FROM ".TABLE_PREFIX.self::MAINTENANCE_PAGE."";
+		$sql = "SELECT * FROM ".TABLE_PREFIX.self::MAINTENANCE_PAGE." WHERE id='1'";
 		$result = self::executeSql($sql);
-		echo $result[0]['content'];
+		echo $result[0]['value'];
 	}
 
 	private function internalPageReferral() {
