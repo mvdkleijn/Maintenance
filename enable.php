@@ -17,8 +17,8 @@
     	CREATE TABLE `".TABLE_PREFIX."maintenance_allowed` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`ip` varchar(20) DEFAULT NULL,
-			`name` varchar(64) DEFAULT NULL,
-			`notes` varchar(512) DEFAULT NULL,
+			`name` varchar(128) DEFAULT NULL,
+			`notes` varchar(1024) DEFAULT NULL,
 			`enabled` enum('yes','no') DEFAULT NULL,
 			PRIMARY KEY (`id`)
 		)";
@@ -63,14 +63,28 @@
 	</body>
 </html>';
 
-
-
-	global $__CMS_CONN__;
-	$sql = "	INSERT INTO `".TABLE_PREFIX."maintenance_page` (`id`,`value`)
+	$addMaintenancePage = "
+			INSERT INTO `".TABLE_PREFIX."maintenance_page` (`id`,`value`)
 				VALUES
 					('1', '$maintenanceHTML')
 				;";
-	$pdo = $__CMS_CONN__->prepare($sql);
+	$pdo = $__CMS_CONN__->prepare($addMaintenancePage);
 	$pdo->execute();
+
+
+	$checkLocalhost = "SELECT * FROM ".TABLE_PREFIX."maintenance_allowed";
+	$pdo = $__CMS_CONN__->prepare($checkLocalhost);
+	$pdo->execute();
+	$checkLocalhostCount = $pdo->rowCount();
+
+	if($checkLocalhostCount == 0) {
+		$addLocalhost = "
+				INSERT INTO `".TABLE_PREFIX."maintenance_allowed` (`id`,`ip`,`name`,`notes`,`enabled`)
+					VALUES
+						('', '127.0.0.1', 'Localhost', 'This is a useful IP to allow when running a L/M/W AMP Stack as it\'s probably yours', 'yes')
+					;";
+		$pdo = $__CMS_CONN__->prepare($addLocalhost);
+		$pdo->execute();
+	}
 
 	exit();
