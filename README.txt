@@ -31,3 +31,13 @@ For developers, there are two Observers which are triggered when a page request 
 	- Observer::notify('maintenance_page_displayed', $uri);
 
 By setting up a listener for these Observers, you can use this data in your own context.
+
+
+
+NOTES
+-----
+
+There is a backdoor into the site during maintenance mode, but it must be enabled to work.
+It isn't advised to enable it but may come in handy if blocking solely by IP address does not satisfy your needs.
+Adding ?backdoorkey=YOUR_KEY_HERE to the URL of a page which is otherwise restricted will unlock that page for you.
+You need to set up your key in the plugin settings page.
