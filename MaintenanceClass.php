@@ -12,8 +12,9 @@ class Maintenance {
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function getAllowed() {
+	public function getAllowed($id=NULL) {
 		$sql = "SELECT * FROM ".TABLE_PREFIX.self::MAINTENANCE_ALLOWED."";
+		if($id) $sql .= " WHERE id='$id'";
 		return self::executeSql($sql);
 	}
 
@@ -57,6 +58,27 @@ class Maintenance {
 		return $maintenancePage[0]['slug'];
 	}
 
+	public function updateIpAccess($id, $status) {
+		$sql = "UPDATE ".TABLE_PREFIX."maintenance_allowed
+				SET enabled='$status'
+				WHERE id='$id'";
+		self::executeSql($sql);
+	}
+
+	public function addAccess($_POST) {
+		$sql = "INSERT INTO ".TABLE_PREFIX."maintenance_allowed
+					(`ip`,`name`,`notes`,`enabled`)
+				VALUES
+					('".$_POST['ip']."', '".$_POST['name']."', '".$_POST['notes']."', '".$_POST['enabled']."');";
+		self::executeSql($sql);
+	}
+
+	public function deleteAccess($id) {
+		$sql = "DELETE FROM ".TABLE_PREFIX."maintenance_allowed
+				WHERE id='$id'";
+		self::executeSql($sql);
+	}
+
 	public function switchStatus($newStatus) {
 		global $__CMS_CONN__;
 		$sql = "UPDATE ".TABLE_PREFIX."plugin_settings
@@ -83,6 +105,15 @@ class Maintenance {
 						WHERE id='1'";
 				self::executeSql($sql);
 			}
+		}
+	}
+
+	public function editAccess($_POST) {
+		foreach($_POST as $key=>$value) {
+			$sql = "UPDATE ".TABLE_PREFIX."maintenance_allowed
+					SET $key='$value'
+					WHERE id='".$_POST['id']."'";
+			self::executeSql($sql);
 		}
 	}
 

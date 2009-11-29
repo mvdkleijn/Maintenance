@@ -12,8 +12,38 @@ class MaintenanceController extends PluginController {
 		$this->display('maintenance/views/backend/index');
 	}
 
-	public function access() {
-		$this->display('maintenance/views/backend/access');
+	public function access($page=NULL) {
+		if($page) {
+			$parts = explode('/', $_SERVER['REQUEST_URI']);
+			Maintenance::updateIpAccess($parts[6],$parts[7]);
+			Flash::set('success', __('Your access list has been updated'));
+			redirect(get_url('maintenance/access'));
+		}
+		$allowed = Maintenance::getAllowed();
+		$this->display('maintenance/views/backend/access', array('allowed' => $allowed));
+	}
+
+	public function add() {
+		Maintenance::addAccess($_POST);
+		Flash::set('success', __('Your access list has been updated'));
+		redirect(get_url('maintenance/access'));
+	}
+
+	public function edit() {
+		Maintenance::editAccess($_POST);
+		Flash::set('success', __('Your access list has been updated'));
+		redirect(get_url('maintenance/access'));
+	}
+
+	public function view($id) {
+		$allowed = Maintenance::getAllowed($id);
+		$this->display('maintenance/views/backend/view', array('allowed' => $allowed));
+	}
+
+	public function delete($id) {
+		Maintenance::deleteAccess($id);
+		Flash::set('success', __('Your access list has been updated'));
+		redirect(get_url('maintenance/access'));
 	}
 
 	public function settings($page=NULL) {

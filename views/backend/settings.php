@@ -29,14 +29,14 @@
 			<input type="radio" name="maintenanceView" <?php if($settings['maintenanceView'] == 'internal') echo 'checked="checked" '; ?>value="internal" /> Internal Redirect<br />
 			<input type="radio" name="maintenanceView" <?php if($settings['maintenanceView'] == 'redirect') echo 'checked="checked" '; ?>value="redirect" /> External Redirect
 		</td>
-		<td class="help">If you select Internal Redirect, please create/edit a Maintenance Page and select "Maintenance" from the Page Types</td>
+		<td class="help">If you select <strong>Internal Redirect</strong>, please create/edit a Maintenance Page and select <strong>"Maintenance"</strong> from the <strong>Page Types</strong></td>
 	</tr>
 	<tr>
 		<td class="label">External URL</td>
 		<td class="field">
 			<input type="text" class="textbox" name="maintenanceRedirectURL" value="<?php echo $settings['maintenanceRedirectURL']; ?>" />
 		</td>
-		<td class="help">Visitors will be redirected to this web page if you selected External Redirect above</td>
+		<td class="help">Visitors will be redirected to this web page if you selected <strong>External Redirect</strong> above</td>
 	</tr>
 	<tr>
 		<td class="label">Custom HTML:</td>
