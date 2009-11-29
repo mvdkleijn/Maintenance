@@ -25,7 +25,11 @@ Dispatcher::addRoute(array(
 	'/maintenance/access/'				=>	'/plugin/maintenance/access',
 	'/maintenance/settings'				=>	'/plugin/maintenance/settings',
 	'/maintenance/settings/'			=>	'/plugin/maintenance/settings',
-	'/maintenance/switchStatus/:any'	=>	'/plugin/maintenance/switchStatus/$1',
+	'/maintenance/settings/update'		=>	'/plugin/maintenance/settings/update',
+	'/maintenance/settings/update/'		=>	'/plugin/maintenance/settings/update',
+	'/maintenance/modes'				=>	'/plugin/maintenance/modes',
+	'/maintenance/modes/'				=>	'/plugin/maintenance/modes',
+	'/maintenance/switchStatus/:any'	=>	'/plugin/maintenance/switchStatus/$1'
 
 ));
 

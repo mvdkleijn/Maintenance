@@ -16,10 +16,27 @@ class MaintenanceController extends PluginController {
 		$this->display('maintenance/views/backend/access');
 	}
 
+	public function modes() {
+		$this->display('maintenance/views/backend/modes');
+	}
+
+	public function settings($page=NULL) {
+		if($page) {
+			Maintenance::updateSettings($_POST);
+			Flash::set('success', __('Your settings have been updated'));
+			redirect(get_url('maintenance/settings'));
+		}
+		else {
+			$customHTML = Maintenance::retrieveContent();
+			$settings = Plugin::getAllSettings('maintenance');
+			$this->display('maintenance/views/backend/settings', array('settings' => $settings, 'customHTML' => $customHTML));
+		}
+	}
+
 	public function switchStatus($newStatus) {
 		$maintenanceUpdate = Maintenance::switchStatus($newStatus);
 		Flash::set('success', __('Maintenance is now ' . strtoupper($maintenanceUpdate) . ''));
-		redirect(get_url('maintenance'));
+		redirect(get_url('maintenance/settings'));
 	}
 
 }

@@ -38,6 +38,12 @@ class Maintenance {
 		echo $result[0]['value'];
 	}
 
+	public function retrieveContent() {
+		$sql = "SELECT * FROM ".TABLE_PREFIX.self::MAINTENANCE_PAGE." WHERE id='1'";
+		$result = self::executeSql($sql);
+		return $result[0]['value'];
+	}
+
 	private function internalPageReferral() {
 		$result = self::getMaintenanceURI();
 		$urlMiddle = '';
@@ -58,9 +64,26 @@ class Maintenance {
 				WHERE plugin_id='maintenance'
 				AND name = 'maintenanceMode'
 				";
-		$stmt = $__CMS_CONN__->prepare($sql);
-		$stmt->execute();
+		self::executeSql($sql);
 		return $newStatus;
+	}
+
+	public function updateSettings($_POST) {
+		foreach($_POST as $key=>$value) {
+			if($key != 'customHTML') {
+				$sql = "UPDATE ".TABLE_PREFIX."plugin_settings
+						SET value='$value'
+						WHERE plugin_id='maintenance'
+						AND name = '$key'";
+				self::executeSql($sql);
+			}
+			elseif($key == 'customHTML') {
+				$sql = "UPDATE ".TABLE_PREFIX."maintenance_page
+						SET value='$value'
+						WHERE id='1'";
+				self::executeSql($sql);
+			}
+		}
 	}
 
 }
