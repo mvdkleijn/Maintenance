@@ -46,3 +46,7 @@ NOTES
 	LOCAL DEVELOPMENT
 		If you have a server running on your local machine, when you access it, your IP address in PHP Env will usually be 127.0.0.1
 		As part of the enable script, this will be added to the access list to save you the step / headache.
+
+	IP WISHLIST
+		Although not here now, I would like to build in the option to use IPv6 and IPv4 in the future.
+		Also, I would like to build in IP ranges rather than individual addresses as they are now.
