@@ -1,5 +1,22 @@
 <?php
 
+/**
+* Maintenance Class
+* 
+* This class interfaces with the Plugin env to allow access to the database
+* 
+* @license		MIT
+* @author		Andrew Waters
+* @link			http://www.band-x.org
+* @email		andrew@band-x.org
+* 
+* @file			MaintenanceClass.php
+* @version		1.0
+* @date			29/12/2009
+* 
+* Copyright (c) 2009
+*/
+
 class Maintenance {
 
 	const MAINTENANCE_ALLOWED	=	"maintenance_allowed";

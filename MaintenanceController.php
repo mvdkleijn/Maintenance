@@ -1,5 +1,20 @@
 <?php
 
+/**
+* Maintenance Controller
+* 
+* @license		MIT
+* @author		Andrew Waters
+* @link			http://www.band-x.org
+* @email		andrew@band-x.org
+* 
+* @file			MaintenanceClass.php
+* @version		1.0
+* @date			29/12/2009
+* 
+* Copyright (c) 2009
+*/
+
 class MaintenanceController extends PluginController {
 
 	public function __construct() {

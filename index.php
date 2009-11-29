@@ -5,7 +5,7 @@ Plugin::setInfos(array(
 	'title'			=>	'Maintenance',
 	'description'   =>	'Prevent unauthorised access to a site during development and maintenance sessions.',
 	'license'		=>	'MIT',
-	'author'		=>	'Andrew Waters at band-x',
+	'author'		=>	'Andrew Waters',
 	'website'		=>	'http://www.band-x.org/',
 	'update_url'	=>	'http://www.band-x.org/update.xml',
 	'version'		=>	'1.0.0',
