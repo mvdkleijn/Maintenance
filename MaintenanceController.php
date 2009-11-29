@@ -9,7 +9,12 @@ class MaintenanceController extends PluginController {
 	}
 
 	public function index() {
-		$this->display('maintenance/views/backend/index');
+		redirect(get_url('maintenance/access'));
+	}
+
+	public function documentation() {
+		$settings = Plugin::getAllSettings('maintenance');
+		$this->display('maintenance/views/backend/documentation', array('settings' => $settings));
 	}
 
 	public function access($page=NULL) {
