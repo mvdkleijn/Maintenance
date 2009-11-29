@@ -34,8 +34,8 @@ class MaintenanceController extends PluginController {
 
 	public function access($page=NULL) {
 		if($page) {
-			$parts = explode('/', $_SERVER['REQUEST_URI']);
-			Maintenance::updateIpAccess($parts[6],$parts[7]);
+			$parts = array_reverse(explode('/', $_SERVER['REQUEST_URI']));
+			Maintenance::updateIpAccess($parts[1], $parts[0]);
 			Flash::set('success', __('Your access list has been updated'));
 			redirect(get_url('maintenance/access'));
 		}
