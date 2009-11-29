@@ -12,6 +12,5 @@
 </div>
 
 <p class="button"><a href="<?php echo get_url('maintenance/access'); ?>"><img src="<?php echo URL_PUBLIC . $coreRoot . '/plugins/maintenance/images/access.png'; ?>" align="middle" alt="Access" /> Access List</a></p>
-<p class="button"><a href="<?php echo get_url('maintenance/modes'); ?>"><img src="<?php echo URL_PUBLIC . $coreRoot . '/plugins/maintenance/images/modes.png'; ?>" align="middle" alt="Modes" /> Modes</a></p>
 <p class="button"><a href="<?php echo get_url('maintenance/settings'); ?>"><img src="<?php echo URL_PUBLIC . $coreRoot . '/plugins/maintenance/images/settings.png'; ?>" align="middle" alt="Settings" /> Settings</a></p>
 </div>

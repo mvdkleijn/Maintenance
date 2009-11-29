@@ -16,10 +16,6 @@ class MaintenanceController extends PluginController {
 		$this->display('maintenance/views/backend/access');
 	}
 
-	public function modes() {
-		$this->display('maintenance/views/backend/modes');
-	}
-
 	public function settings($page=NULL) {
 		if($page) {
 			Maintenance::updateSettings($_POST);
