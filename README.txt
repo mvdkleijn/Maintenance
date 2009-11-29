@@ -50,3 +50,14 @@ NOTES
 	IP WISHLIST
 		Although not here now, I would like to build in the option to use IPv6 and IPv4 in the future.
 		Also, I would like to build in IP ranges rather than individual addresses as they are now.
+
+
+
+CHANGELOG
+---------
+
+1.0.1
+- Fixed bug in controller so that mod_rewrite doesn't break access control
+
+1.0.0
+First Build
