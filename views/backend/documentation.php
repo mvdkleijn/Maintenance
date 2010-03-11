@@ -20,7 +20,7 @@
 <p><small><strong><?php echo URL_PUBLIC; ?>about-us/what-we-do?backdoorkey=<?php echo $settings['maintenanceBackdoorKey']; ?></strong></small></p>
 
 <h2>Observers</h2>
-<p>There are two observers which you can use to hook into your own functions:</p>
+<p>There are three observers which you can use to hook into your own functions:</p>
 <p><small><strong>maintenance_page_requested($uri)</strong></small><br />Fired when a page is requested in maintenance mode. The Page URI is passed to your listener.</p>
 <p><small><strong>maintenance_page_displayed($uri)</strong></small><br />Fired when an unauthorised person tries to access your site whilst in maintenance mode. The Page URI is passed to your listener.</p>
 <p><small><strong>maintenance_page_bypassed($ip, $uri)</strong></small><br />Fired when an authorised person accesses a page, either with a backdoor key or because they are from a validated IP address. The IP address and Page URI is passed to your listener.</p>
