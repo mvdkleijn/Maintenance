@@ -12,9 +12,12 @@ Plugin::setInfos(array(
     'type'			=>	'both'
 ));
 
-Plugin::addController('maintenance', 'Maintenance', 'administrator,developer', TRUE);
+Plugin::addController('maintenance', 'Maintenance', 'administrator,developer,editor', TRUE);
 include('MaintenanceClass.php');
+
+Observer::observe('dispatch_route_found', 'maintenance_check');
 Observer::observe('page_requested', 'maintenance_check');
+
 Behavior::add('Maintenance', '');
 
 Dispatcher::addRoute(array(
@@ -36,7 +39,7 @@ Dispatcher::addRoute(array(
 
 ));
 
-function maintenance_check($uri) {
+function maintenance_check($uri=NULL) {
 	$settings = Plugin::getAllSettings('maintenance');
 	if($settings['maintenanceMode'] == 'on') {
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -45,7 +48,7 @@ function maintenance_check($uri) {
 		elseif(Maintenance::isAllowed($ip) == FALSE) {
 			$uriSlug = trim($uri, '/');
 			$maintenancePage = Maintenance::getMaintenanceURI();
-			if($uriSlug != $maintenancePage) {
+			if($uriSlug != $maintenancePage || !isset($maintenancePage)) {
 				Observer::notify('maintenance_page_displayed', $uri);
 				Maintenance::displayMaintenancePage($uri, $settings);
 			}			
