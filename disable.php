@@ -1,5 +1,7 @@
 <?php
 
+	if(!defined('IN_CMS')) { exit(); }
+
 	global $__CMS_CONN__;
 	$sql = "	UPDATE ".TABLE_PREFIX."plugin_settings
 				SET	`value`='off'

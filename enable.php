@@ -1,5 +1,7 @@
 <?php
 
+	if(!defined('IN_CMS')) { exit(); }
+
 	$time = time();
 
 	global $__CMS_CONN__;

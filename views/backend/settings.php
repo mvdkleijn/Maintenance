@@ -1,3 +1,5 @@
+<?php if(!defined('IN_CMS')) { exit(); } ?>
+
 <h1>Maintenance Settings</h1>
 
 <form method="post" action="<?php echo get_url('maintenance/settings/update'); ?>">
